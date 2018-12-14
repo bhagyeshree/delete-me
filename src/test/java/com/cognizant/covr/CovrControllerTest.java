@@ -70,4 +70,27 @@ public final class CovrControllerTest {
 		assertThat(content, is("{id='1', text='TEXT'}"));
 	}
 
+	@Test
+	public void returnReverseStringWhenStringPosted() throws Exception {
+		// Setup
+
+		String text = "reverse-this";
+
+
+		//Exercise
+		RequestBuilder requestBuilder = MockMvcRequestBuilders
+				.post("/reverse")
+				.accept(MediaType.APPLICATION_JSON).content(text);
+
+		final String content = mockMvc.perform(requestBuilder)
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+
+
+		// Assert
+		assertThat(content, is("siht-esrever"));
+	}
+
 }

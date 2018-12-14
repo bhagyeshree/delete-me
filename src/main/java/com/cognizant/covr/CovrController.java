@@ -23,5 +23,14 @@ final class CovrController {
 		return newItem;
 
 	}
+
+	@PostMapping("/reverse")
+	String reverse(@RequestBody String text){
+		StringBuilder sb = new StringBuilder();
+		sb.append(text);
+		sb.reverse();
+		return sb.toString();
+
+	}
 }
 
